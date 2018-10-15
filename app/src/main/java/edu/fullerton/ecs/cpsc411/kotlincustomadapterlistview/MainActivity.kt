@@ -27,7 +27,7 @@ val people = arrayOf(
     Person("Beatrice J. Hernadez", "BeatriceJHernadez@dayrep.com")
 )
 
-class PersonAdapter(context: Context, objects: Array<Person>) : ArrayAdapter<Person>(context, android.R.layout.simple_list_item_2, android.R.id.text1, objects) {
+class PersonAdapter(context: Context) : ArrayAdapter<Person>(context, android.R.layout.simple_list_item_2, android.R.id.text1, people) {
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val row = super.getView(position, convertView, parent)
 
@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val adapter = PersonAdapter(this, people)
+        val adapter = PersonAdapter(this)
 
         listView.adapter = adapter
         listView.setOnItemClickListener { _, _, position, _->
